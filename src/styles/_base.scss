@@ -4,9 +4,9 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   line-height: 1.7;
-  @include mq(sm) {
-    font-size: 15px;
-  }
+  // @include mq(sm) {
+  //   font-size: 15px;
+  // }
 }
 
 *,
@@ -20,8 +20,8 @@ body {
   color: var(--color-text);
   word-break: break-word;
   word-wrap: break-word;
-  font-family: "Inter", "BlinkMacSystemFont", "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans", Meiryo, sans-serif;
+  font-family: 'Inter', 'BlinkMacSystemFont', 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', Meiryo, sans-serif;
 }
 
 img {
@@ -77,4 +77,8 @@ button {
   transition: 0.25s;
   padding: 0;
   margin: 0;
+}
+
+p {
+  font-size: 1.4rem;
 }

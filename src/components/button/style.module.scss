@@ -1,0 +1,21 @@
+.btn {
+  color: var(--color-white);
+  background: var(--color-primary-dark);
+  padding: 5px 15px;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-medium);
+  border-radius: 11px;
+  height: 40px;
+  display: inline-block;
+  cursor: pointer;
+  transition: opacity .1s;
+
+  &.isDisabled {
+    pointer-events: none;
+    background: #c2c2c2;
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+}

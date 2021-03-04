@@ -1,26 +1,15 @@
 .kv {
-  background-image: linear-gradient(0deg, #d7f0fa -20%, white 85%, white 100%);
-  padding: 50px 0;
+  background-image: linear-gradient(0deg, #e5f6fd -20%, #fafdff 85%, white 100%);
+  padding: 200px 0;
+  text-align: center;
 }
 
 .title {
   color: var(--color-text-dark);
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: var(--font-weight-bold);
   line-height: 1.3;
   text-align: center;
-}
-
-.button {
-  color: var(--color-white);
-  background: var(--color-primary-dark);
-  padding: 5px 15px;
-  font-size: 1.6rem;
-  font-weight: var(--font-weight-medium);
-  border-radius: 25px;
-  display: block;
-  width: 100%;
-  height: 40px;
 }
 
 .buttonWrap {

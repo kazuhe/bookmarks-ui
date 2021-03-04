@@ -4,6 +4,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { getUserByName } from 'utils/helper'
+import { Button } from 'components/button'
 import styles from 'styles/pages/index.module.scss'
 
 export const Home = (): JSX.Element => (
@@ -16,16 +17,17 @@ export const Home = (): JSX.Element => (
     <main>
       <div className={styles.kv}>
         <h1 className={styles.title}>Aggregate your knowledge</h1>
+        <p>
+          It’s the easiest, fastest way to manage content: Integrate your tools.
+        </p>
 
         <div className={styles.buttonWrap}>
-          <button
-            className={styles.button}
+          <Button
+            label="Sign up for Bookmarks"
             onClick={() => {
               getUserByName('kazuhe')
             }}
-          >
-            Get user
-          </button>
+          />
         </div>
       </div>
     </main>
