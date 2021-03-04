@@ -1,7 +1,14 @@
+/*
+ * Import
+ */
 import React from 'react'
 import { AppProps } from 'next/app'
 import { Header } from 'components/header'
+import 'styles/globals.scss'
 
+/*
+ * Root
+ */
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>

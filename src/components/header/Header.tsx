@@ -5,7 +5,9 @@ import React from 'react'
 import Image from 'next/image'
 import styles from './style.module.scss'
 
-// DOM
+/*
+ * DOM
+ */
 export const Header: React.FC = () => (
   <header className={styles.header}>
     <div>
