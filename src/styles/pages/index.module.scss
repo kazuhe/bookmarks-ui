@@ -1,5 +1,10 @@
 .kv {
-  background-image: linear-gradient(0deg, #e5f6fd -20%, #fafdff 85%, white 100%);
+  background-image: linear-gradient(
+    0deg,
+    #e5f6fd -20%,
+    #fafdff 85%,
+    white 100%
+  );
   padding: 200px 0;
   text-align: center;
 }
@@ -20,6 +25,6 @@
 .signupWrap {
   padding: 0 15px;
   margin-top: 40px;
-  max-width: 600px;
+  max-width: 500px;
   margin: 40px auto 0;
 }

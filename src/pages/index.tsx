@@ -4,7 +4,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { getUserByName } from 'utils/helper'
-import { Signup } from 'components/signup'
+import { SignupContainer } from 'components/signup'
 import { Button } from 'components/button'
 import styles from 'styles/pages/index.module.scss'
 
@@ -21,7 +21,7 @@ export const Home = (): JSX.Element => (
         <p>It’s the easiest, fastest way to aggregate knowledge.</p>
 
         <div className={styles.signupWrap}>
-          <Signup />
+          <SignupContainer />
         </div>
         <div className={styles.buttonWrap}>
           <Button

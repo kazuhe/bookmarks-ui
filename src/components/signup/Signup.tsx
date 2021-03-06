@@ -1,7 +1,7 @@
 /*
  * Import
  */
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from 'components/button'
 import styles from './style.module.scss'
 
@@ -9,16 +9,14 @@ import styles from './style.module.scss'
  * Types
  */
 export type Props = {
-  link?: string
-  label?: string
-  isEnabled?: boolean
-  onClick?: () => void
+  name: string
+  nameHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 /*
  * DOM
  */
-export const Signup: React.FC<Props> = () => (
+export const Signup: React.FC<Props> = (props) => (
   <form className={styles.signup}>
     <div className={styles.signup_item}>
       <label htmlFor="username">Name and ID</label>
@@ -26,8 +24,11 @@ export const Signup: React.FC<Props> = () => (
         id="username"
         typeof="username"
         type="text"
+        value={props.name}
+        onChange={props.nameHandler}
         autoComplete="username"
       />
+      <p>name:{props.name}</p>
     </div>
     <div className={styles.signup_item}>
       <label htmlFor="email">Email</label>
@@ -54,3 +55,17 @@ export const Signup: React.FC<Props> = () => (
     </div>
   </form>
 )
+
+/*
+ * Container
+ */
+export const SignupContainer: React.FC = () => {
+  const [name, setName] = useState('')
+
+  const nameHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setName(e.target.value)
+    console.log(e)
+  }
+
+  return <Signup name={name} nameHandler={nameHandler} />
+}
