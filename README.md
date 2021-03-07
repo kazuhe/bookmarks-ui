@@ -2,8 +2,8 @@
 
 Bookmarks app
 
-
 ## ■ Getting Started
+
 ```bash
 # インストール
 $ yarn install
@@ -13,6 +13,7 @@ $ yarn dev
 ```
 
 ## ■ Technology stack
+
 ```bash
 # フレームワーク
 Next.js + TypeScript
@@ -27,6 +28,7 @@ ESLint
 ## ■ Development notes
 
 ### 基本ファイル構成
+
 ```tsx
 /*
  * Import

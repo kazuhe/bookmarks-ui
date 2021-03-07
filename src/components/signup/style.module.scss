@@ -4,28 +4,6 @@
   font-size: 1.4rem;
   border-radius: 5px;
   box-shadow: rgb(50 50 50 / 10%) 0px 15px 30px, rgb(0 0 0 / 7%) 0px 5px 15px;
-
-  &_item {
-    text-align: left;
-
-    & label {
-      color: var(--color-text-dark);
-      font-weight: var(--font-weight-bold);
-      display: block;
-      margin-top: 15px;
-    }
-
-    & input {
-      border-radius: 5px;
-      border: none;
-      background: var(--color-background-light);
-      height: 40px;
-      padding: 10px 15px;
-      outline: none;
-      margin-top: 5px;
-      width: 100%;
-    }
-  }
 }
 
 .button {
