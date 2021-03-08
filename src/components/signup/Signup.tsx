@@ -2,6 +2,7 @@
  * Import
  */
 import React, { useState, useEffect } from 'react'
+import { createUser } from 'utils/helper'
 import validator from 'validator'
 import { Button } from 'components/button'
 import { Input } from 'components/input'
@@ -24,6 +25,7 @@ export type Props = {
   password: InputType
   passwordHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
   buttonState: boolean
+  signup: () => void
 }
 
 /*
@@ -60,9 +62,7 @@ export const Signup: React.FC<Props> = (props) => (
         label="Sign up for Bookmarks"
         wide
         isEnabled={props.buttonState}
-        onClick={() => {
-          console.log('Sign up for Bookmarks')
-        }}
+        onClick={props.signup}
       />
     </div>
   </form>
@@ -156,6 +156,16 @@ export const SignupContainer: React.FC = () => {
     password.error,
   ])
 
+  // signup 新規ユーザーをPOST
+  const signup = () => {
+    const data = {
+      name: name.value,
+      email: email.value,
+      password: password.value,
+    }
+    createUser(data)
+  }
+
   return (
     <Signup
       name={name}
@@ -165,6 +175,7 @@ export const SignupContainer: React.FC = () => {
       password={password}
       passwordHandler={passwordHandler}
       buttonState={buttonState}
+      signup={signup}
     />
   )
 }
