@@ -1,6 +1,9 @@
 .header {
-  display: flex;
-  align-items: center;
-  height: 60px;
-  background-color: #23272b;
+  background: var(--color-background);
+
+  &_inner {
+    display: flex;
+    align-items: center;
+    height: 60px;
+  }
 }

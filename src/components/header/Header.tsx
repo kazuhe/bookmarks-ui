@@ -3,6 +3,7 @@
  */
 import React from 'react'
 import Image from 'next/image'
+import { Wrapper } from 'components/wrapper'
 import styles from './style.module.scss'
 
 /*
@@ -10,10 +11,17 @@ import styles from './style.module.scss'
  */
 export const Header: React.FC = () => (
   <header className={styles.header}>
-    <div>
-      <a href="/">
-        <Image src="/vercel.svg" alt="Vercel Logo" height={'32'} width={'64'} />
-      </a>
-    </div>
+    <Wrapper>
+      <div className={styles.header_inner}>
+        <a href="/">
+          <Image
+            src="/logo.svg"
+            alt="Vercel Logo"
+            height={'17.5'}
+            width={'125'}
+          />
+        </a>
+      </div>
+    </Wrapper>
   </header>
 )

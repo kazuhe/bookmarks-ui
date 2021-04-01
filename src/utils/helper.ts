@@ -20,24 +20,27 @@ export function getUserByName(name: string): void {
     })
 }
 
-export function createUser(data: User): void {
-  fetch(`http://localhost:8080/v1/users/`, {
+export async function createUser(data: User): Promise<void> {
+  const response = await fetch(`http://localhost:8080/v1/users/`, {
     method: 'POST',
-    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
   })
-    .then((response) => {
-      console.log(response)
-      if (!response.ok) {
-        throw new Error(`HTTP error: ${response}`)
-      } else {
-        console.log('成功')
-      }
-    })
-    .catch((error) => {
-      console.error(error)
-    })
+  if (response.ok) {
+    console.log('response' + response)
+    console.log('ok' + response.ok)
+    console.log('status' + response.status)
+    console.log('json' + response.json)
+    console.log('url' + response.url)
+    // const json = await response.json()
+    // console.log(json)
+  } else {
+    console.log('response' + response)
+    console.log('ok' + response.ok)
+    console.log('status' + response.status)
+    console.log('json' + response.json)
+    console.log('url' + response.url)
+  }
 }
