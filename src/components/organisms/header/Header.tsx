@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import Image from 'next/image'
-import { Wrapper } from 'components/wrapper'
+import { Wrapper } from 'components/templates/wrapper'
 import styles from './style.module.scss'
 
 /*

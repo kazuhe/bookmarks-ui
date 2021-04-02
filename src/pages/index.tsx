@@ -4,8 +4,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { getUserByName } from 'utils/helper'
-import { SignupContainer } from 'components/signup'
-import { Button } from 'components/button'
+import { SignupContainer } from 'components/molecules/signup'
+import { Button } from 'components/atoms/button'
 import styles from 'styles/pages/index.module.scss'
 
 export const Home = (): JSX.Element => (

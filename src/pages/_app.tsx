@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import { AppProps } from 'next/app'
-import { Header } from 'components/header'
+import { Header } from 'components/organisms/header'
 import 'styles/globals.scss'
 
 /*

@@ -21,11 +21,18 @@ module.exports = {
         'sass-loader',
       ],
       include: [
-        path.resolve(__dirname, '../src/styles'),
         path.resolve(__dirname, '../src/components'),
-        path.resolve(__dirname, '../src/node_modules'),
+        path.resolve(__dirname, '../src/styles'),
+        path.resolve(__dirname, '../src/utils'),
       ],
-    })
+    }),
+
+    // 絶対パスでのインポートを認識させる
+    config.resolve.modules = [
+      ...(config.resolve.modules || []),
+      path.resolve('./src/'),
+    ]
+
     return config
   },
 }

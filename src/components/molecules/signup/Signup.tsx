@@ -4,8 +4,8 @@
 import React, { useState, useEffect } from 'react'
 import { createUser } from 'utils/helper'
 import validator from 'validator'
-import { Button } from 'components/button'
-import { Input } from 'components/input'
+import { Button } from 'components/atoms/button'
+import { Input } from 'components/atoms/input'
 import styles from './style.module.scss'
 
 /*
