@@ -26,12 +26,11 @@ module.exports = {
         path.resolve(__dirname, '../src/utils'),
       ],
     }),
-
-    // 絶対パスでのインポートを認識させる
-    config.resolve.modules = [
-      ...(config.resolve.modules || []),
-      path.resolve('./src/'),
-    ]
+      // 絶対パスでのインポートを認識させる
+      (config.resolve.modules = [
+        ...(config.resolve.modules || []),
+        path.resolve('./src/'),
+      ])
 
     return config
   },

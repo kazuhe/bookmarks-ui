@@ -3,36 +3,25 @@
  */
 import Head from 'next/head'
 import Image from 'next/image'
-import { getUserByName } from 'utils/helper'
+import { Wrapper } from 'components/templates/wrapper'
+import { Title } from 'components/atoms/title'
 import { SignupContainer } from 'components/molecules/signup'
-import { Button } from 'components/atoms/button'
-import styles from 'styles/pages/index.module.scss'
 
 export const Home = (): JSX.Element => (
-  <div className="container">
+  <div className="home">
     <Head>
       <title>Create Next App</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <main>
-      <div className={styles.kv}>
-        <h1 className={styles.title}>Aggregate your knowledge</h1>
-        <p>It’s the easiest, fastest way to aggregate knowledge.</p>
-
-        <div className={styles.signupWrap}>
+    <div className="mv">
+      <Wrapper>
+        <Title />
+        <div className="mv_signup">
           <SignupContainer />
         </div>
-        <div className={styles.buttonWrap}>
-          <Button
-            label="Sign up for Bookmarks"
-            onClick={() => {
-              getUserByName('kazuhe')
-            }}
-          />
-        </div>
-      </div>
-    </main>
+      </Wrapper>
+    </div>
 
     <footer>
       <a
@@ -44,6 +33,18 @@ export const Home = (): JSX.Element => (
         <Image src="/vercel.svg" alt="Vercel Logo" height={'32'} width={'64'} />
       </a>
     </footer>
+
+    <style jsx>{`
+      .mv {
+        background: var(--color-background);
+        color: var(--color-white-dark);
+        padding: 3rem 0 5rem;
+      }
+
+      .mv_signup {
+        margin: 1.5rem 0 0;
+      }
+    `}</style>
   </div>
 )
 

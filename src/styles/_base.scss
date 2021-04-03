@@ -20,6 +20,7 @@ body {
   color: var(--color-text);
   word-break: break-word;
   word-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
   font-family: 'Inter', 'BlinkMacSystemFont', 'Hiragino Kaku Gothic ProN',
     'Hiragino Sans', Meiryo, sans-serif;
 }
