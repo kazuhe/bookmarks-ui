@@ -27,7 +27,7 @@ ESLint
 
 ## ■ Development notes
 
-### 基本ファイル構成
+### 基本コンポーネント構成
 
 ```tsx
 /*
@@ -74,3 +74,7 @@ export const ExampleContainer: React.FC = () => {
   return <Signup name={name} nameHandler={nameHandler} />
 }
 ```
+
+### テスト方針
+
+- ロジックを持った単一モジュールにはユニットテストを書き、それ以外の機能仕様についてはインテグレーションテストでカバー

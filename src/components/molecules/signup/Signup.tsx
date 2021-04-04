@@ -1,7 +1,7 @@
 /*
  * Import
  */
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { createUser } from 'utils/helper'
 import { Button } from 'components/atoms/button'
 import { InputContainer } from 'components/atoms/input'
@@ -17,8 +17,8 @@ export type Props = {
   emailHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
   password: string
   passwordHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
-  buttonState: boolean
   signup: () => void
+  error: boolean
   errorHandler: (error: boolean) => void
 }
 
@@ -55,7 +55,11 @@ export const Signup: React.FC<Props> = (props) => (
       <Button
         label="Sign up for Bookmarks"
         wide
-        isEnabled={props.buttonState}
+        isEnabled={
+          props.name && props.email && props.password && !props.error
+            ? true
+            : false
+        }
         onClick={props.signup}
       />
     </div>
@@ -90,17 +94,6 @@ export const SignupContainer: React.FC = () => {
     setError(iseError)
   }
 
-  // Button 全て入力されていてエラーがなければ'true'を返却
-  const [buttonState, setButtonState] = useState(false)
-  useEffect(() => {
-    const value = name && email && password ? true : false
-    if (value && !error) {
-      setButtonState(true)
-    } else {
-      setButtonState(false)
-    }
-  }, [name, email, password, error])
-
   // signup 新規ユーザーをPOST
   const signup = () => {
     const data = {
@@ -119,8 +112,8 @@ export const SignupContainer: React.FC = () => {
       emailHandler={emailHandler}
       password={password}
       passwordHandler={passwordHandler}
-      buttonState={buttonState}
       signup={signup}
+      error={error}
       errorHandler={errorHandler}
     />
   )
