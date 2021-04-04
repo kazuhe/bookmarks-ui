@@ -3,29 +3,23 @@
  */
 import React, { useState, useEffect } from 'react'
 import { createUser } from 'utils/helper'
-import validator from 'validator'
 import { Button } from 'components/atoms/button'
-import { Input } from 'components/atoms/input'
+import { InputContainer } from 'components/atoms/input'
 import styles from './style.module.scss'
 
 /*
  * Types
  */
-type InputType = {
-  value: string
-  error: boolean
-  message: string
-}
-
 export type Props = {
-  name: InputType
+  name: string
   nameHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
-  email: InputType
+  email: string
   emailHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
-  password: InputType
+  password: string
   passwordHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
   buttonState: boolean
   signup: () => void
+  errorHandler: (error: boolean) => void
 }
 
 /*
@@ -33,29 +27,29 @@ export type Props = {
  */
 export const Signup: React.FC<Props> = (props) => (
   <form className={styles.signup}>
-    <Input
+    <InputContainer
       id="username"
       label="Name and ID"
-      value={props.name.value}
-      error={props.name.error}
-      errorMessage={props.name.message}
+      value={props.name}
+      validationType="lowercaseHalfWidth"
       handler={props.nameHandler}
+      errorHandler={props.errorHandler}
     />
-    <Input
+    <InputContainer
       id="email"
       label="Email"
-      value={props.email.value}
-      error={props.email.error}
-      errorMessage={props.email.message}
+      value={props.email}
+      validationType="email"
       handler={props.emailHandler}
+      errorHandler={props.errorHandler}
     />
-    <Input
+    <InputContainer
       id="password"
       label="Password"
-      value={props.password.value}
-      error={props.password.error}
-      errorMessage={props.password.message}
+      value={props.password}
+      validationType="password"
       handler={props.passwordHandler}
+      errorHandler={props.errorHandler}
     />
     <div className={styles.button}>
       <Button
@@ -72,96 +66,47 @@ export const Signup: React.FC<Props> = (props) => (
  * Container
  */
 export const SignupContainer: React.FC = () => {
-  // 小文字のみ半角英字と数字以外が含まれていれば'false'を返却
-  const patternCheck = (value: string): boolean => {
-    return value.match(/^[a-z0-9]*$/) ? true : false
-  }
-
-  // 小文字大文の半角英字と数字をそれぞれ1種類以上で8文字~100文字
-  const passWordCheck = (value: string): boolean => {
-    return value.match(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}$/)
-      ? true
-      : false
-  }
-
-  const intialState = { value: '', error: false, message: '' }
-
   // Name
-  const [name, setName] = useState(intialState)
+  const [name, setName] = useState('')
   const nameHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const value = e.target.value
-    if (!value) {
-      setName({ value: value, error: true, message: '入力してください' })
-    } else if (!patternCheck(value)) {
-      setName({
-        value: value,
-        error: true,
-        message: '小文字半角英数字で入力してください',
-      })
-    } else {
-      setName({ value: value, error: false, message: '' })
-    }
+    setName(e.target.value)
   }
 
   // Email
-  const [email, setEmail] = useState(intialState)
+  const [email, setEmail] = useState('')
   const emailHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const value = e.target.value
-    if (!value) {
-      setEmail({ value: value, error: true, message: '入力してください' })
-    } else if (!validator.isEmail(value)) {
-      setEmail({
-        value: value,
-        error: true,
-        message: '正しいメールアドレスを入力してください',
-      })
-    } else {
-      setEmail({ value: value, error: false, message: '' })
-    }
+    setEmail(e.target.value)
   }
 
   // Password
-  const [password, setPassword] = useState(intialState)
+  const [password, setPassword] = useState('')
   const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const value = e.target.value
-    if (!value) {
-      setPassword({ value: value, error: true, message: '入力してください' })
-    } else if (!passWordCheck(value)) {
-      setPassword({
-        value: value,
-        error: true,
-        message: '大文字を含む半角英数字を8文字以上入力してください',
-      })
-    } else {
-      setPassword({ value: value, error: false, message: '' })
-    }
+    setPassword(e.target.value)
+  }
+
+  // Error
+  const [error, setError] = useState(false)
+  const errorHandler = (iseError: boolean): void => {
+    setError(iseError)
   }
 
   // Button 全て入力されていてエラーがなければ'true'を返却
   const [buttonState, setButtonState] = useState(false)
   useEffect(() => {
-    const value = name.value && email.value && password.value ? true : false
-    const error = !name.error && !email.error && !password.error
-    if (value && error) {
+    const value = name && email && password ? true : false
+    if (value && !error) {
       setButtonState(true)
     } else {
       setButtonState(false)
     }
-  }, [
-    name.value,
-    name.error,
-    email.value,
-    email.error,
-    password.value,
-    password.error,
-  ])
+  }, [name, email, password, error])
 
   // signup 新規ユーザーをPOST
   const signup = () => {
     const data = {
-      name: name.value,
-      email: email.value,
-      password: password.value,
+      name: name,
+      email: email,
+      password: password,
     }
     createUser(data)
   }
@@ -176,6 +121,7 @@ export const SignupContainer: React.FC = () => {
       passwordHandler={passwordHandler}
       buttonState={buttonState}
       signup={signup}
+      errorHandler={errorHandler}
     />
   )
 }
