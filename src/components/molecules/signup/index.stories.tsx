@@ -11,12 +11,13 @@ const Template: Story<Props> = (args) => <Signup {...args} />
 
 export const Standard = Template.bind({})
 Standard.args = {
-  name: 'Name',
+  name: 'name',
   nameHandler: (e) => console.log(e.target.value),
-  email: 'Email',
+  email: 'exapmle@gmail.com',
   emailHandler: (e) => console.log(e.target.value),
-  password: 'Password',
+  password: 'Password1234',
   passwordHandler: (e) => console.log(e.target.value),
-  buttonState: false,
   signup: () => console.log('button'),
+  error: false,
+  errorHandler: (bool) => console.log(bool),
 }
