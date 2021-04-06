@@ -13,7 +13,7 @@
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o build -s ./stories/assets"
   },
   "husky": {
     "hooks": {
@@ -24,7 +24,8 @@
   "lint-staged": {
     "*.@(ts|tsx)": [
       "yarn lint",
-      "yarn format"
+      "yarn format",
+      "yarn test"
     ]
   },
   "dependencies": {
